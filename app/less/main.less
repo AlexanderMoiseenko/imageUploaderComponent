@@ -1,0 +1,189 @@
+@posRel: relative;
+@posAbs: absolute;
+@transition: .4s ease all;
+@fullSize: 100%;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: gray;
+    font-family: sans-serif;
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.pictDiv {
+    position: @posRel;
+    width: 768px;
+    height: 460px;
+    margin: 8% auto;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+}
+.innerPictDiv {
+    width: @fullSize;
+    height: @fullSize;
+    position: @posRel;
+    border-radius: 10px;
+    background-color:#f2f2f2;
+}
+
+img.outputImg{
+    display: block;
+    position: @posAbs;
+    width: @fullSize;
+    height: @fullSize;
+    background: #f2f2f2;
+    border-radius: 10px;
+}
+
+.uploadImgDiv {
+    display: inline-block;
+    margin-top: 27%;
+    left: 40%;
+    background-color: #e5e5e5;
+}
+
+.changeImgDiv {
+    background-color: #f1f1f3;
+}
+
+.uploadImgDiv, 
+.changeImgDiv {
+    width: 135px;
+    height: 40px;
+    overflow: hidden;
+    position: @posRel;
+    border-radius: 10px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.uploadImgDiv:hover, 
+.changeImgDiv:hover {
+    background-color: #4CAF50;
+    line-height: 40px;
+    cursor: pointer;
+    transition: @transition;
+}
+
+.uploadInput, 
+.changeImgInput {
+    display: block;
+    border-radius: 10px;
+    position: @posAbs;
+    opacity: 0;
+    font-size: 100px; 
+    cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.changeImgDiv {
+    background-color: #fff;
+}
+
+.changeImgDiv:hover {
+    background-color: #4CAF50;
+}
+
+.hasImg .uploadImgDiv {
+    display: none;
+}
+
+.deleteImgButton {
+    width: 135px;
+    height: 40px;
+    overflow: hidden;
+    position: @posRel;
+    background-color: transparent;
+    border-radius: 10px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px; 
+    color: white;
+}
+
+.deleteImgButton:hover {
+    background-color: #e6726a;
+    line-height: 40px;
+    cursor: pointer;
+    transition: @transition;
+}
+
+.pictDiv input:hover {
+    cursor: pointer;
+}
+
+.hoverMnu {
+    display: none;
+}
+
+.hasImg:hover:not(.disabled) .hoverMnu {
+    position: @posAbs;
+    width: @fullSize;
+    height: @fullSize;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    transition: @transition;
+    background-color: rgba(0, 0, 0, .35);
+    z-index: 1;
+    border-radius: 10px;
+
+    .changeImgDiv,
+    .deleteImgButton {
+        position: absolute;
+        left: 40%;
+    }
+
+    .changeImgDiv {
+        bottom: 50%;
+    }
+
+    .deleteImgButton {
+        bottom: 40%;
+    }
+}
+
+.uploadInput, 
+.changeImgInput {
+    top: 0;
+}
+
+/*Styles for disabling the component*/
+
+.disabledOverlay {
+    display: none;
+    position: @posAbs;
+    width: @fullSize;
+    height: @fullSize;
+    background-color: rgba(255, 255, 255, .35);
+    z-index: 2; 
+}
+
+.disabled .disabledOverlay {
+    display: block;
+}
+.hasImg:hover .disabled .hoverMnu {
+    display:none;
+}
+/*End of styles for disabling the component*/
+
+.hidden {
+    display: none !important;
+}
