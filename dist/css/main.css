@@ -3,14 +3,27 @@
           box-sizing: border-box;
 }
 body {
-  background: gray;
+  background: #C8E6C9;
   font-family: sans-serif;
 }
 .container {
   width: 90%;
   margin: 0 auto;
 }
-.pictDiv {
+.btn {
+  width: 135px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
+}
+.pict-div {
   position: relative;
   width: 768px;
   height: 460px;
@@ -25,54 +38,61 @@ body {
   padding: 10px;
   background-color: #fff;
 }
-.innerPictDiv {
+.inner-pict-div {
   width: 100%;
   height: 100%;
   position: relative;
   -webkit-border-radius: 10px;
           border-radius: 10px;
   background-color: #f2f2f2;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-img.outputImg {
+img.output-img {
   display: block;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #f2f2f2;
   -webkit-border-radius: 10px;
           border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.uploadImgDiv {
+img.output-img.horizontal {
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+img.output-img.vertical {
+  height: 100%;
+}
+.btn-upload {
   display: inline-block;
-  margin-top: 27%;
-  left: 40%;
+  top: 47%;
   background-color: #e5e5e5;
 }
-.changeImgDiv {
+.change-img-div {
   background-color: #f1f1f3;
-}
-.uploadImgDiv,
-.changeImgDiv {
-  width: 135px;
-  height: 40px;
-  overflow: hidden;
-  position: relative;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
-  line-height: 40px;
-  text-align: center;
-  font-size: 16px;
-}
-.uploadImgDiv:hover,
-.changeImgDiv:hover {
-  background-color: #4CAF50;
-  line-height: 40px;
-  cursor: pointer;
   -webkit-transition: 0.4s ease all;
   transition: 0.4s ease all;
 }
-.uploadInput,
-.changeImgInput {
+.btn-upload:hover,
+.change-img-div:hover {
+  background-color: #4CAF50;
+  line-height: 40px;
+  cursor: pointer;
+}
+.upload-input,
+.change-img-input {
   display: block;
   -webkit-border-radius: 10px;
           border-radius: 10px;
@@ -84,16 +104,16 @@ img.outputImg {
 ::-webkit-file-upload-button {
   cursor: pointer;
 }
-.changeImgDiv {
+.change-img-div {
   background-color: #fff;
 }
-.changeImgDiv:hover {
+.change-img-div:hover {
   background-color: #4CAF50;
 }
-.hasImg .uploadImgDiv {
+.has-img .btn-upload {
   display: none;
 }
-.deleteImgButton {
+.delete-img-btn {
   width: 135px;
   height: 40px;
   overflow: hidden;
@@ -106,20 +126,18 @@ img.outputImg {
   font-size: 16px;
   color: white;
 }
-.deleteImgButton:hover {
+.delete-img-btn:hover {
   background-color: #e6726a;
   line-height: 40px;
   cursor: pointer;
-  -webkit-transition: 0.4s ease all;
-  transition: 0.4s ease all;
 }
-.pictDiv input:hover {
+.pict-div input:hover {
   cursor: pointer;
 }
-.hoverMnu {
+.hover-mnu {
   display: none;
 }
-.hasImg:hover:not(.disabled) .hoverMnu {
+.has-img:hover:not(.disabled) .hover-mnu {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -130,30 +148,28 @@ img.outputImg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: 0.4s ease all;
-  transition: 0.4s ease all;
   background-color: rgba(0, 0, 0, 0.35);
   z-index: 1;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  top: 0;
+  left: 0;
 }
-.hasImg:hover:not(.disabled) .hoverMnu .changeImgDiv,
-.hasImg:hover:not(.disabled) .hoverMnu .deleteImgButton {
+.has-img:hover:not(.disabled) .hover-mnu .change-img-div,
+.has-img:hover:not(.disabled) .hover-mnu .delete-img-btn {
   position: absolute;
   left: 40%;
 }
-.hasImg:hover:not(.disabled) .hoverMnu .changeImgDiv {
+.has-img:hover:not(.disabled) .hover-mnu .change-img-div {
   bottom: 50%;
 }
-.hasImg:hover:not(.disabled) .hoverMnu .deleteImgButton {
+.has-img:hover:not(.disabled) .hover-mnu .delete-img-btn {
   bottom: 40%;
 }
-.uploadInput,
-.changeImgInput {
+.upload-input,
+.change-img-input {
   top: 0;
 }
 /*Styles for disabling the component*/
-.disabledOverlay {
+.disabled-overlay {
   display: none;
   position: absolute;
   width: 100%;
@@ -161,10 +177,10 @@ img.outputImg {
   background-color: rgba(255, 255, 255, 0.35);
   z-index: 2;
 }
-.disabled .disabledOverlay {
+.disabled .disabled-overlay {
   display: block;
 }
-.hasImg:hover .disabled .hoverMnu {
+.has-img:hover .disabled .hover-mnu {
   display: none;
 }
 /*End of styles for disabling the component*/
