@@ -2,13 +2,14 @@
 @posAbs: absolute;
 @transition: .4s ease all;
 @fullSize: 100%;
+@green: #4CAF50;
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    background: gray;
+    background:#C8E6C9;
     font-family: sans-serif;
 }
 .container {
@@ -16,7 +17,18 @@ body {
     margin: 0 auto;
 }
 
-.pictDiv {
+.btn {
+    width: 135px;
+    height: 40px;
+    overflow: hidden;
+    position: @posRel;
+    border-radius: 10px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    transition: @transition;
+}
+.pict-div {
     position: @posRel;
     width: 768px;
     height: 460px;
@@ -29,56 +41,55 @@ body {
     padding: 10px;
     background-color: #fff;
 }
-.innerPictDiv {
+.inner-pict-div {
     width: @fullSize;
     height: @fullSize;
     position: @posRel;
     border-radius: 10px;
     background-color:#f2f2f2;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
 }
 
-img.outputImg{
+img.output-img{
     display: block;
     position: @posAbs;
-    width: @fullSize;
-    height: @fullSize;
-    background: #f2f2f2;
     border-radius: 10px;
+    object-fit: cover;
+    &.horizontal {
+        width:100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &.vertical {
+        height: 100%;
+    }
 }
 
-.uploadImgDiv {
+.btn-upload {
     display: inline-block;
-    margin-top: 27%;
-    left: 40%;
+    top: 47%;
     background-color: #e5e5e5;
 }
 
-.changeImgDiv {
+.change-img-div {
     background-color: #f1f1f3;
-}
-
-.uploadImgDiv, 
-.changeImgDiv {
-    width: 135px;
-    height: 40px;
-    overflow: hidden;
-    position: @posRel;
-    border-radius: 10px;
-    line-height: 40px;
-    text-align: center;
-    font-size: 16px;
-}
-
-.uploadImgDiv:hover, 
-.changeImgDiv:hover {
-    background-color: #4CAF50;
-    line-height: 40px;
-    cursor: pointer;
     transition: @transition;
 }
 
-.uploadInput, 
-.changeImgInput {
+.btn-upload:hover, 
+.change-img-div:hover {
+    background-color: @green;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.upload-input, 
+.change-img-input {
     display: block;
     border-radius: 10px;
     position: @posAbs;
@@ -91,19 +102,19 @@ img.outputImg{
     cursor: pointer;
 }
 
-.changeImgDiv {
+.change-img-div {
     background-color: #fff;
 }
 
-.changeImgDiv:hover {
-    background-color: #4CAF50;
+.change-img-div:hover {
+    background-color: @green;
 }
 
-.hasImg .uploadImgDiv {
+.has-img .btn-upload {
     display: none;
 }
 
-.deleteImgButton {
+.delete-img-btn {
     width: 135px;
     height: 40px;
     overflow: hidden;
@@ -116,22 +127,21 @@ img.outputImg{
     color: white;
 }
 
-.deleteImgButton:hover {
+.delete-img-btn:hover {
     background-color: #e6726a;
     line-height: 40px;
     cursor: pointer;
-    transition: @transition;
 }
 
-.pictDiv input:hover {
+.pict-div input:hover {
     cursor: pointer;
 }
 
-.hoverMnu {
+.hover-mnu {
     display: none;
 }
 
-.hasImg:hover:not(.disabled) .hoverMnu {
+.has-img:hover:not(.disabled) .hover-mnu {
     position: @posAbs;
     width: @fullSize;
     height: @fullSize;
@@ -140,34 +150,34 @@ img.outputImg{
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    transition: @transition;
     background-color: rgba(0, 0, 0, .35);
     z-index: 1;
-    border-radius: 10px;
+    top: 0;
+    left: 0;
 
-    .changeImgDiv,
-    .deleteImgButton {
+    .change-img-div,
+    .delete-img-btn {
         position: absolute;
         left: 40%;
     }
 
-    .changeImgDiv {
+    .change-img-div {
         bottom: 50%;
     }
 
-    .deleteImgButton {
+    .delete-img-btn {
         bottom: 40%;
     }
 }
 
-.uploadInput, 
-.changeImgInput {
+.upload-input, 
+.change-img-input {
     top: 0;
 }
 
 /*Styles for disabling the component*/
 
-.disabledOverlay {
+.disabled-overlay {
     display: none;
     position: @posAbs;
     width: @fullSize;
@@ -176,10 +186,10 @@ img.outputImg{
     z-index: 2; 
 }
 
-.disabled .disabledOverlay {
+.disabled .disabled-overlay {
     display: block;
 }
-.hasImg:hover .disabled .hoverMnu {
+.has-img:hover .disabled .hover-mnu {
     display:none;
 }
 /*End of styles for disabling the component*/
