@@ -25,8 +25,8 @@ body {
 }
 .pict-div {
   position: relative;
-  width: 768px;
-  height: 460px;
+  max-width: 768px;
+  min-height: 460px;
   margin: 8% auto;
   display: -webkit-flex;
   display: -moz-flex;
@@ -40,7 +40,6 @@ body {
 }
 .inner-pict-div {
   width: 100%;
-  height: 100%;
   position: relative;
   -webkit-border-radius: 10px;
           border-radius: 10px;
@@ -59,11 +58,9 @@ body {
 }
 img.output-img {
   display: block;
-  position: absolute;
+  position: relative;
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 img.output-img.horizontal {
   width: 100%;
@@ -71,13 +68,17 @@ img.output-img.horizontal {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 img.output-img.vertical {
   height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .btn-upload {
   display: inline-block;
-  top: 47%;
+  top: 46%;
   background-color: #e5e5e5;
 }
 .change-img-div {
@@ -109,6 +110,10 @@ img.output-img.vertical {
 }
 .change-img-div:hover {
   background-color: #4CAF50;
+}
+.has-img {
+  max-width: 768px;
+  max-height: 480px;
 }
 .has-img .btn-upload {
   display: none;
