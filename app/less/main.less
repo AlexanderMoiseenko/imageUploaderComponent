@@ -30,8 +30,8 @@ body {
 }
 .pict-div {
     position: @posRel;
-    width: 768px;
-    height: 460px;
+    max-width: 768px;
+    min-height: 460px;
     margin: 8% auto;
     display: -webkit-flex;
     display: -moz-flex;
@@ -43,7 +43,6 @@ body {
 }
 .inner-pict-div {
     width: @fullSize;
-    height: @fullSize;
     position: @posRel;
     border-radius: 10px;
     background-color:#f2f2f2;
@@ -57,22 +56,23 @@ body {
 
 img.output-img{
     display: block;
-    position: @posAbs;
+    position: relative;
     border-radius: 10px;
-    object-fit: cover;
     &.horizontal {
         width:100%;
         top: 50%;
         transform: translateY(-50%);
+        object-fit: cover;
     }
     &.vertical {
         height: 100%;
+        object-fit: contain;
     }
 }
 
 .btn-upload {
     display: inline-block;
-    top: 47%;
+    top: 46%;
     background-color: #e5e5e5;
 }
 
@@ -108,6 +108,11 @@ img.output-img{
 
 .change-img-div:hover {
     background-color: @green;
+}
+
+.has-img {
+    max-width: 768px;
+    max-height: 480px;
 }
 
 .has-img .btn-upload {
